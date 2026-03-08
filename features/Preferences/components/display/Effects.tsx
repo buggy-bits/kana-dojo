@@ -86,7 +86,7 @@ function SoundEffectCard({
         aria-label={name}
       />
       <span
-        className='text-base leading-tight'
+        className='text-lg leading-tight'
         style={{
           color: isSelected ? 'var(--background-color)' : 'var(--main-color)',
           transition: 'color 275ms',

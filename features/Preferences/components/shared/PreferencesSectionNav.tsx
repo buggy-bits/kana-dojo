@@ -142,7 +142,7 @@ const PreferencesSectionNav = () => {
                   href={`#${section.id}`}
                   onClick={event => handleNavigate(event, section.id)}
                   className={cn(
-                    'relative z-10 flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl px-3 pt-2 pb-4 text-sm font-semibold no-underline transition-colors duration-300 sm:px-5',
+                    'relative z-10 flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl px-5 pt-2 pb-4 text-sm font-semibold no-underline transition-colors duration-300 sm:px-5',
                     isSelected
                       ? 'text-(--background-color)'
                       : 'text-(--secondary-color)/70 hover:text-(--main-color)',
