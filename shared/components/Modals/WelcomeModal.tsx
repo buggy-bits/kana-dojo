@@ -9,6 +9,7 @@ import {
   Type,
   ChevronRight,
   ChevronLeft,
+  CircleStar,
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
@@ -216,9 +217,10 @@ const WelcomeModal = () => {
                 borderBottomThickness={16}
                 onClick={handleTryDemo}
               >
-                <span className='inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-(--secondary-color) text-(--background-color) border-b-8 border-(--secondary-color-accent) transition-all duration-200 active:border-b-0 active:translate-y-[6px] active:mb-[6px]'>
-                  あ
-                </span>
+                <CircleStar
+                  className='h-6 w-6 animate-spin text-(--background-color)'
+                  aria-hidden
+                />
                 <span className='ml-2'>{t('steps.welcome.demoCta')}</span>
               </ActionButton>
             </div>
