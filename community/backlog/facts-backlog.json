@@ -1223,7 +1223,7 @@
     "id": 204,
     "fact": "The Japanese word 'yorimichi' (寄り道) means taking a pleasant detour on the way home just because.",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": 205,
@@ -1234,7 +1234,7 @@
   {
     "id": 206,
     "fact": "Many Japanese supermarkets sell 'bento' at night with discount stickers that increase as closing time approaches.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
