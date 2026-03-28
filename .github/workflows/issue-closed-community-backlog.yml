@@ -189,7 +189,8 @@ jobs:
                   if (quoteIndex !== -1) {
                     animeQuotes[quoteIndex].issued = false;
                     needsCommit = true;
-                    console.log(`Re-enabled anime quote #${quoteId}`);`n                }
+                    console.log(`Re-enabled anime quote #${quoteId}`);
+                  }
                 }
                 return;
               }

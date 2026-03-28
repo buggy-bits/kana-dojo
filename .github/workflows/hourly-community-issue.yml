@@ -740,7 +740,26 @@ jobs:
               fs.writeFileSync(videoGameQuotesBacklogPath, JSON.stringify(videoGameQuotes, null, 2));
               backlogChanged = true;
               } else if (nextType === 'idiom') {
-              item = findRandomEligible(idioms, function(i) {`n                if (i.issued) {`n                  return false;`n                }`n                return true;`n              });
+              item = findRandomEligible(idioms, function(i) {
+                if (i.issued || i.completed) {
+                  return false;
+                }
+                if (Array.isArray(existingIdioms)) {
+                  const exists = existingIdioms.some(function(ei) {
+                    if (!ei || typeof ei !== 'object') {
+                      return false;
+                    }
+                    return ei.japanese === i.japanese && ei.romaji === i.romaji && ei.english === i.english;
+                  });
+                  if (exists) {
+                    const idiomIdx = idioms.findIndex(function(ii) { return ii.id === i.id; });
+                    idioms[idiomIdx].completed = true;
+                    backlogChanged = true;
+                    return false;
+                  }
+                }
+                return true;
+              });
 
               if (!item) {
                 console.log('No more idioms available in backlog.');
@@ -775,7 +794,26 @@ jobs:
               fs.writeFileSync(idiomsBacklogPath, JSON.stringify(idioms, null, 2));
               backlogChanged = true;
               } else if (nextType === 'regionalDialect') {
-              item = findRandomEligible(regionalDialects, function(d) {`n                if (d.issued) {`n                  return false;`n                }`n                return true;`n              });
+              item = findRandomEligible(regionalDialects, function(d) {
+                if (d.issued || d.completed) {
+                  return false;
+                }
+                if (Array.isArray(existingRegionalDialects)) {
+                  const exists = existingRegionalDialects.some(function(ed) {
+                    if (!ed || typeof ed !== 'object') {
+                      return false;
+                    }
+                    return ed.dialect === d.dialect && ed.standardJapanese === d.standardJapanese && ed.region === d.region;
+                  });
+                  if (exists) {
+                    const dialectIdx = regionalDialects.findIndex(function(di) { return di.id === d.id; });
+                    regionalDialects[dialectIdx].completed = true;
+                    backlogChanged = true;
+                    return false;
+                  }
+                }
+                return true;
+              });
 
               if (!item) {
                 console.log('No more regional dialect entries available in backlog.');
@@ -810,7 +848,26 @@ jobs:
               fs.writeFileSync(regionalDialectsBacklogPath, JSON.stringify(regionalDialects, null, 2));
               backlogChanged = true;
             } else if (nextType === 'falseFriend') {
-              item = findRandomEligible(falseFriends, function(f) {`n              if (f.issued) {`n                return false;`n              }`n              return true;`n            });
+              item = findRandomEligible(falseFriends, function(f) {
+                if (f.issued || f.completed) {
+                  return false;
+                }
+                if (Array.isArray(existingFalseFriends)) {
+                  const exists = existingFalseFriends.some(function(ef) {
+                    if (!ef || typeof ef !== 'object') {
+                      return false;
+                    }
+                    return ef.termA === f.termA && ef.termB === f.termB;
+                  });
+                  if (exists) {
+                    const falseFriendIdx = falseFriends.findIndex(function(fi) { return fi.id === f.id; });
+                    falseFriends[falseFriendIdx].completed = true;
+                    backlogChanged = true;
+                    return false;
+                  }
+                }
+                return true;
+              });
 
               if (!item) {
                 console.log('No more false friends available in backlog.');
@@ -843,7 +900,26 @@ jobs:
               fs.writeFileSync(falseFriendsBacklogPath, JSON.stringify(falseFriends, null, 2));
               backlogChanged = true;
             } else if (nextType === 'culturalEtiquette') {
-              item = findRandomEligible(culturalEtiquette, function(e) {`n              if (e.issued) {`n                return false;`n              }`n              return true;`n            });
+              item = findRandomEligible(culturalEtiquette, function(e) {
+                if (e.issued || e.completed) {
+                  return false;
+                }
+                if (Array.isArray(existingCulturalEtiquette)) {
+                  const exists = existingCulturalEtiquette.some(function(ec) {
+                    if (!ec || typeof ec !== 'object') {
+                      return false;
+                    }
+                    return ec.situation === e.situation && ec.do === e.do && ec.dont === e.dont;
+                  });
+                  if (exists) {
+                    const etiquetteIdx = culturalEtiquette.findIndex(function(ei) { return ei.id === e.id; });
+                    culturalEtiquette[etiquetteIdx].completed = true;
+                    backlogChanged = true;
+                    return false;
+                  }
+                }
+                return true;
+              });
 
               if (!item) {
                 console.log('No more cultural etiquette entries available in backlog.');
@@ -876,7 +952,26 @@ jobs:
               fs.writeFileSync(culturalEtiquetteBacklogPath, JSON.stringify(culturalEtiquette, null, 2));
               backlogChanged = true;
             } else if (nextType === 'exampleSentence') {
-              item = findRandomEligible(exampleSentences, function(e) {`n              if (e.issued) {`n                return false;`n              }`n              return true;`n            });
+              item = findRandomEligible(exampleSentences, function(e) {
+                if (e.issued || e.completed) {
+                  return false;
+                }
+                if (Array.isArray(existingExampleSentences)) {
+                  const exists = existingExampleSentences.some(function(ee) {
+                    if (!ee || typeof ee !== 'object') {
+                      return false;
+                    }
+                    return ee.japanese === e.japanese && ee.romaji === e.romaji && ee.english === e.english;
+                  });
+                  if (exists) {
+                    const sentenceIdx = exampleSentences.findIndex(function(ei) { return ei.id === e.id; });
+                    exampleSentences[sentenceIdx].completed = true;
+                    backlogChanged = true;
+                    return false;
+                  }
+                }
+                return true;
+              });
 
               if (!item) {
                 console.log('No more example sentences available in backlog.');
@@ -909,7 +1004,26 @@ jobs:
               fs.writeFileSync(exampleSentencesBacklogPath, JSON.stringify(exampleSentences, null, 2));
               backlogChanged = true;
             } else if (nextType === 'commonMistake') {
-              item = findRandomEligible(commonMistakes, function(m) {`n              if (m.issued) {`n                return false;`n              }`n              return true;`n            });
+              item = findRandomEligible(commonMistakes, function(m) {
+                if (m.issued || m.completed) {
+                  return false;
+                }
+                if (Array.isArray(existingCommonMistakes)) {
+                  const exists = existingCommonMistakes.some(function(em) {
+                    if (!em || typeof em !== 'object') {
+                      return false;
+                    }
+                    return em.wrong === m.wrong && em.correct === m.correct;
+                  });
+                  if (exists) {
+                    const mistakeIdx = commonMistakes.findIndex(function(mi) { return mi.id === m.id; });
+                    commonMistakes[mistakeIdx].completed = true;
+                    backlogChanged = true;
+                    return false;
+                  }
+                }
+                return true;
+              });
 
               if (!item) {
                 console.log('No more common mistakes available in backlog.');
@@ -942,7 +1056,18 @@ jobs:
               fs.writeFileSync(commonMistakesBacklogPath, JSON.stringify(commonMistakes, null, 2));
               backlogChanged = true;
             } else if (nextType === 'wallpaperUrl') {
-              item = findRandomEligible(wallpaperUrls, function(entry) {`n              if (entry.issued) {`n                return false;`n              }`n              return true;`n            });
+              item = findRandomEligible(wallpaperUrls, function(entry) {
+                if (entry.issued || entry.completed) {
+                  return false;
+                }
+                if (Array.isArray(existingWallpaperUrls) && existingWallpaperUrls.includes(entry.url)) {
+                  const urlIdx = wallpaperUrls.findIndex(function(ui) { return ui.id === entry.id; });
+                  wallpaperUrls[urlIdx].completed = true;
+                  backlogChanged = true;
+                  return false;
+                }
+                return true;
+              });
 
               if (!item) {
                 console.log('No more wallpaper URLs available in backlog.');
@@ -985,7 +1110,7 @@ jobs:
               backlogChanged = true;
             } else if (nextType === 'communityNote') {
               item = findRandomEligible(communityNotes, function(entry) {
-                return !entry.issued;
+                return !entry.issued && !entry.completed;
               });
 
               if (!item) {
