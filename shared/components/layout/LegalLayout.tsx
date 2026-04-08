@@ -46,7 +46,7 @@ const LegalLayout = ({
                 <span className='motion-safe:animate-float inline-flex h-12 w-12 items-center justify-center rounded-2xl border-b-8 border-(--secondary-color-accent) bg-(--secondary-color) text-(--background-color) [animation-delay:200ms]'>
                   {icon}
                 </span>
-                <h1 className='text-4xl font-bold text-(--main-color)'>
+                <h1 className='text-5xl font-bold text-(--main-color)'>
                   {title}
                 </h1>
               </div>
