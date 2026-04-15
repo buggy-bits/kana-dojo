@@ -171,7 +171,7 @@ const MobileBottomBar = () => {
                   )}
                 </button>
               </div>
-              {idx === 1 && socialLinks.length > 2 && (
+              {(idx === 1 || idx === 2) && socialLinks.length > 2 && (
                 <span className='text-sm text-(--main-color) select-none'>
                   ~
                 </span>
