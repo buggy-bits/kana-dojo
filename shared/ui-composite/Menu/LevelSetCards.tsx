@@ -177,11 +177,11 @@ const VisibleRowsSection = <TItem,>({
             {!collapsedRows.includes(rowIndex) && (
               <div
                 className={clsx(
-                  'flex w-full flex-col',
-                  'md:grid md:items-start md:w-fit',
-                  rowSets.length === 1 && 'lg:grid-cols-1',
-                  rowSets.length === 2 && 'lg:grid-cols-2',
-                  rowSets.length >= 3 && 'lg:grid-cols-2 2xl:grid-cols-3',
+                  'flex flex-col',
+                  'md:grid md:items-start',
+                  rowSets.length === 1 && 'md:grid-cols-1',
+                  rowSets.length === 2 && 'md:grid-cols-2',
+                  rowSets.length >= 3 && 'md:grid-cols-2 2xl:grid-cols-3',
                 )}
               >
                 {rowSets.map((setTemp, i) => {
