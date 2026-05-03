@@ -139,6 +139,17 @@
     "Matsumoto Castle",
     "Nijo Castle"
   ],
+  {
+  "question": "What is the Japanese term for a hot spring?",
+  "difficulty": "easy",
+  "answers": [
+    "Onsen",
+    "Sentou",
+    "Ryokan",
+    "Izakaya"
+  ],
+  "correctIndex": 0
+}
   "correctIndex": 0
   }
 ]
