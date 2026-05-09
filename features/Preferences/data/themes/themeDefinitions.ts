@@ -1158,6 +1158,12 @@ const baseThemeSets: BaseThemeGroup[] = [
         mainColor: 'oklch(92.0% 0.045 95.0 / 1)',
         secondaryColor: 'oklch(64.0% 0.210 28.0 / 1)',
       },
+      {
+        id: 'riverstone-gray',
+        backgroundColor: 'oklch(20.0% 0.010 260.0 / 1)',
+        mainColor: 'oklch(78.0% 0.020 90.0 / 1)',
+        secondaryColor: 'oklch(55.0% 0.035 240.0 / 1)',
+      },
     ],
   },
   {
